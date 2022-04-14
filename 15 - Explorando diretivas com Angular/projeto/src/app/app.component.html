@@ -1,0 +1,44 @@
+<h1 class="text-success">Testando diretivas no Angular!</h1>
+
+<!-- NGSTYLE directive -->
+<!-- <div [ngStyle]="{ color: counter < 5 ? 'red' : 'green' }">
+  <h2 class="text-center">Contador: {{ counter }}</h2>
+</div> -->
+
+<!-- NGCLASS directive -->
+<div [ngClass]="{ custom: counter < 5 }">
+  <h2 class="text-center">Contador: {{ counter }}</h2>
+</div>
+
+<!-- Diretivas estruturais -->
+<h2 class="text-center" *ngIf="counter > 9; else menorQue9">
+  A contagem foi concluída.
+</h2>
+<ng-template #menorQue9>
+  <h2 class="text-center">A contagem é menor ou igual a 9</h2>
+</ng-template>
+<ul [ngSwitch]="counter" class="list-group mx-auto col-3">
+  <li class="list-group-item" *ngSwitchCase="3">É igual a 3</li>
+  <li class="list-group-item" *ngSwitchCase="5">É igual a 5</li>
+  <li class="list-group-item" *ngSwitchCase="7">É igual a 7</li>
+  <li class="list-group-item" *ngSwitchCase="9">É igual a 8</li>
+  <li class="list-group-item" *ngSwitchDefault="">Default</li>
+</ul>
+<br />
+<ul class="list-group mx-auto col-3">
+  <li *ngFor="let pessoa of pessoas" class="list-group-item">
+    O nome é {{ pessoa.nome }} e o sobrenome é {{ pessoa.sobrenome }}
+  </li>
+</ul>
+<br />
+<div class="col-4 mx-auto">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Digite algo"
+    [(ngModel)]="text"
+  />
+  <h4 appMarcaTexto corDeFundo="orange" corDoTexto="black">
+    Saída: {{ text }}
+  </h4>
+</div>
